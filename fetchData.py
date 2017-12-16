@@ -27,16 +27,11 @@ class CustomStreamListener(tweepy.StreamListener):
     def on_status(self, status):
         global i
         global err
-        if (i < (20000+err)):
+        if (i < (20000)):
             if status.lang == 'en':     #we need only English language
                     if status.place.country == 'United States':     #filter for USA
-                        f = open("text3.txt", "a") 
-                        try:
-                            f.write(status.text.encode('utf-8')) #saving only text parameter
-                        except: 
-                            #print "error"
-                            raise
-                        f.write("\n")
+                        f = open("tweets.txt", "a") 
+                        f.write(status.text.encode('utf-8')) #saving only text parameter
                         f.close()
                         for hashtag in status.entities['hashtags']: 
                             f = open("hashtags3.txt", "a") 
