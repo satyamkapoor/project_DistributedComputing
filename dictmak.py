@@ -10,5 +10,7 @@ for line in file:
 	b = b[:c]
 	d[a] = b
 
-newd = dict(sorted(d.items(), key=operator.itemgetter(1), reverse=True)[:10])
+#newd = dict(sorted(d.items(), key=operator.itemgetter(1), reverse=True)[:10])
+
+newd = dict(sorted(d.items(), key=lambda x: int(x[1]), reverse=True)[:10])
 print(newd)
