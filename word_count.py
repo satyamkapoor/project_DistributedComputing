@@ -2,7 +2,7 @@
 """
 Created on Thu Dec 14 22:23:50 2017
 
-@author: vase_
+@author: satyam
 """
 
 from mrjob.job import MRJob

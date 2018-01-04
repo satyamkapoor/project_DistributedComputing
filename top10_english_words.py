@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Dec 15 2:23:50 2017
+
+@author: satyam
+"""
 import operator
 
 file = open('counts','r')
@@ -10,7 +16,6 @@ for line in file:
 	b = b[:c]
 	d[a] = b
 
-#newd = dict(sorted(d.items(), key=operator.itemgetter(1), reverse=True)[:10])
 
 newd = dict(sorted(d.items(), key=lambda x: int(x[1]), reverse=True)[:10])
 print(newd)

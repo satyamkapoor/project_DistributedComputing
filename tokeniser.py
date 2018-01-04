@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Dec 15 20:23:50 2017
+
+@author: satyam
+"""
+
+
 import codecs
 from nltk.tokenize import *
 """ emoticon recognition via patterns.  tested on english-language twitter, but
@@ -6,7 +14,7 @@ probably works for other social media dialects. """
 __author__ = "Brendan O'Connor (anyall.org, brenocon@gmail.com)"
 __version__= "april 2009"
 
-#from __future__ import print_function
+
 import re,sys
 
 mycompile = lambda pat:  re.compile(pat,  re.UNICODE)
