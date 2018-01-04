@@ -7,8 +7,9 @@ Created on Thu Dec 14 15:59:31 2017
 
 import sys
 import tweepy
+import time
 
-
+process_status = 0
 access_key = "940968924467945472-pcTOE0Lo6fHt8AWyHy7o5KKCdQDQhIA"
 access_secret = "5UBUgQmAJpmTgaNMvNsAMcJzvBgoY2lKtfYdKTrGnW24u"
 consumer_key = "PQOm1uKmBRrJkXoqiqTEctNjs"
@@ -25,12 +26,14 @@ class CustomStreamListener(tweepy.StreamListener):
     i = 0
     err = 0
     def on_status(self, status):
+	
+
         global i
         global err
         if i < 20000:
             if status.lang == 'en':     #we need only English language
                     if status.place.country == 'United States':     #filter for USA
-                        f = open("tweets.txt", "w") 
+                        f = open("tweets.txt", "a") 
                         try:
                             f.write((status.text.replace("\n", "")).encode("utf8")) #saving text parameter & stripping of \n which might have been added by the user
                         except AttributeError:
@@ -39,7 +42,7 @@ class CustomStreamListener(tweepy.StreamListener):
                         f.write("\n") #as we've already stripped of \n now adding \n to the end of each tweet (text)
                         f.close()
                         for hashtag in status.entities['hashtags']: 
-                            f = open("hashtags.txt", "w") 
+                            f = open("hashtags.txt", "a") 
                             try:
                                 f.write(hashtag['text'].encode("utf8")) #saving hashtags
                             except:
@@ -63,3 +66,7 @@ class CustomStreamListener(tweepy.StreamListener):
 def testrun():
     sapi = tweepy.streaming.Stream(auth, CustomStreamListener())    #create Stream
     sapi.filter(locations=[-122.995004, 32.323198, -67.799695, 49.893813]) #limit only for USA
+    return true
+
+
+process_status=1

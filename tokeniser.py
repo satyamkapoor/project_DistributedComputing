@@ -8,13 +8,6 @@ Created on Thu Dec 15 20:23:50 2017
 
 import codecs
 from nltk.tokenize import *
-""" emoticon recognition via patterns.  tested on english-language twitter, but
-probably works for other social media dialects. """
-
-__author__ = "Brendan O'Connor (anyall.org, brenocon@gmail.com)"
-__version__= "april 2009"
-
-
 import re,sys
 
 mycompile = lambda pat:  re.compile(pat,  re.UNICODE)
@@ -62,42 +55,23 @@ def analyze_tweet(text):
   text = SMILEY.sub(' ',text)
   text = MULTITOK_SMILEY.sub(r'',text)
   text = emoji_pattern.sub(r'', text)
-  
   s= Sad_RE.search(text)
-  #if h and s: return "BOTH_HS"
-  #if h: return "HAPPY"
-  #if s: return "SAD"
   return text
 
-  # more complex & harder, so disabled for now
-  #w= Wink_RE.search(text)
-  #t= Tongue_RE.search(text)
-  #a= Other_RE.search(text)
-  #h,w,s,t,a = [bool(x) for x in [h,w,s,t,a]]
-  #if sum([h,w,s,t,a])>1: return "MULTIPLE"
-  #if sum([h,w,s,t,a])==1:
-  #  if h: return "HAPPY"
-  #  if s: return "SAD"
-  #  if w: return "WINK"
-  #  if a: return "OTHER"
-  #  if t: return "TONGUE"
-  #return "NA"
 
 
 
+def tokeniser_self_func():
+	tknzr = TweetTokenizer(strip_handles=True, reduce_len=True)
+	f = codecs.open('tweets.txt', 'r', encoding="utf-8-sig")
+	alllines = list()
+	for line in f:
+	    alllines.append(tknzr.tokenize(analyze_tweet(line)))
 
-tknzr = TweetTokenizer(strip_handles=True, reduce_len=True)
-f = codecs.open('tweets.txt', 'r', encoding="utf-8-sig")
-alllines = list()
-for line in f:
-    alllines.append(tknzr.tokenize(analyze_tweet(line)))
-    #alllines.append(tknzr.tokenize(re.sub("^\d+\line|\line\d+\line|\line\d+$", " ", analyze_tweet(line))))
-    #alllines.append(re.sub("^\d+\line|\line\d+\line|\line\d+$", " ", analyze_tweet(line)))
-    
-nufile= open('tokenised_data.txt','w')
-# print(alllines)
-for ln in alllines:
-    for i in ln:
-        nufile.write(i)
-        nufile.write('\n')
+	    
+	nufile= open('tokenised_tweets.txt','w')
+	for ln in alllines:
+	    for x in ln:
+		nufile.write(x)
+		nufile.write('\n')
 

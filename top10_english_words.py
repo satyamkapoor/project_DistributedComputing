@@ -6,7 +6,7 @@ Created on Thu Dec 15 2:23:50 2017
 """
 import operator
 
-file = open('counts','r')
+file = open('englishwordCounted.txt','r')
 d = {}
 for line in file:
 	x = line.split('\t')
