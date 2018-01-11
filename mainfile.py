@@ -2,7 +2,7 @@ import fetchTWEETS
 import tokeniser
 
 print('Collection of tweets started... It might take a few minutes \n')
-fetchTWEETS.testrun()
+#fetchTWEETS.testrun()
 print('Tweets & hashtag collection completed \n')
 
 print('Tokenisation of tweets initiated .....')

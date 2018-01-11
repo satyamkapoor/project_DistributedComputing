@@ -5,6 +5,7 @@ Created on Thu Dec 15 2:23:50 2017
 @author: satyam
 """
 import operator
+import json
 
 file = open('englishwordCounted.txt','r')
 d = {}
@@ -18,4 +19,5 @@ for line in file:
 
 
 newd = dict(sorted(d.items(), key=lambda x: int(x[1]), reverse=True)[:10])
-print(newd)
+print('English Words - top 10 \n')
+print json.dumps(newd, indent=3)

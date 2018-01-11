@@ -62,16 +62,16 @@ def analyze_tweet(text):
 
 
 def tokeniser_self_func():
-	tknzr = TweetTokenizer(strip_handles=True, reduce_len=True)
-	f = codecs.open('tweets.txt', 'r', encoding="utf-8-sig")
-	alllines = list()
-	for line in f:
-	    alllines.append(tknzr.tokenize(analyze_tweet(line)))
+  tknzr = TweetTokenizer(strip_handles=True, reduce_len=True)
+  f = codecs.open('tweets.txt', 'r', encoding="utf-8-sig")
+  alllines = list()
+  for line in f:
+  	alllines.append(tknzr.tokenize(analyze_tweet(line)))
 
-	    
-	nufile= open('tokenised_tweets.txt','w')
-	for ln in alllines:
-	    for x in ln:
-		nufile.write(x)
-		nufile.write('\n')
+  	    
+  nufile= open('tokenised_tweets.txt','w')
+  for ln in alllines:
+  	for x in ln:
+  		nufile.write(x)
+  		nufile.write('\n')
 
